@@ -10,10 +10,7 @@ class App extends React.Component {
 
 
   update() {
-    console.log("update");
     this.add();
-    console.log('rendering..');
-    console.log(this.props.text);
     ReactDOM.render(<App text="" />, document.getElementById('app'))
     this.clear();
   }
@@ -29,12 +26,6 @@ class App extends React.Component {
       li.appendChild(document.createTextNode(textToAdd));//add text node
       ul.appendChild(li); //append li to list
     }
-  }
-
-  makeListItem(textToAdd) {
-    return (
-      <div> <li data-toggle="tooltip" data-placement="right" title="Don't forget this!">{textToAdd}</li> </div>
-    )
   }
 
 //Clear method for clearing text out of text box before next button click
