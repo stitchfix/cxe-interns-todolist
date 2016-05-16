@@ -31,12 +31,12 @@ class App extends React.Component {
     }
   }
 
-
   makeListItem(textToAdd) {
     return (
       <div> <li data-toggle="tooltip" data-placement="right" title="Don't forget this!">{textToAdd}</li> </div>
     )
   }
+
 //Clear method for clearing text out of text box before next button click
   clear(){
     document.getElementById("textToAdd").value = "";
@@ -46,9 +46,15 @@ class App extends React.Component {
     return (
       <div>
         <input type="textarea" name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text} data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
-        <input type="submit" value="Add" id="addbutton" onClick={this.update.bind(this)}/>
+
+        <button type="submit" class="btn btn-secondary" data-toggle="popover" data-container="body" data-placement="right" title="Add Item"
+          data-content="This will add the item to the list!" data-trigger="hover" onClick={this.update.bind(this)}>
+          Add Item!
+        </button>
+
         <br/> <br/> <br/> <br/>
-        <ul id="list" ></ul>
+
+        <ul id="list"></ul>
       </div>
     );
   }
