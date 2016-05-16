@@ -42,7 +42,7 @@ class App extends React.Component {
 
         <input type="textarea" name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text}/>
 
-        <button type="submit" class="btn btn-secondary" data-toggle="popover" data-container="body" data-placement="right"
+        <button type="submit" class="btn btn-secondary" data-toggle="popover" data-container="body" data-placement="right" title="Add Item"
           data-content="This will add the item to the list!" data-trigger="hover" onClick={this.update.bind(this)}>
           Add Item!
         </button>
