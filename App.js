@@ -27,8 +27,15 @@ class App extends React.Component {
       var ul = document.getElementById("list"); //get list
       var li = document.createElement("li");    //make li element
       li.appendChild(document.createTextNode(textToAdd));//add text node
-      ul.appendChild(li); //append li to list
+      ul.appendChild(<li data-toggle="tooltip" data-placement="bottom" title="Don't forget this!">{textToAdd}</li>); //append li to list
     }
+  }
+
+
+  makeListItem(textToAdd) {
+    return (
+      <div> <li data-toggle="tooltip" data-placement="right" title="Don't forget this!">{textToAdd}</li> </div>
+    )
   }
 //Clear method for clearing text out of text box before next button click
   clear(){
@@ -39,9 +46,9 @@ class App extends React.Component {
     return (
       <div>
         <input type="textarea" name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text} data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
-        <input type="button" value="Add" id="addbutton" onClick={this.update.bind(this)}/>
+        <input type="submit" value="Add" id="addbutton" onClick={this.update.bind(this)}/>
         <br/> <br/> <br/> <br/>
-        <ul id="list"></ul>
+        <ul id="list" ></ul>
       </div>
     );
   }
