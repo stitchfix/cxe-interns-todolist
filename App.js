@@ -38,13 +38,15 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <input type="textarea" name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text}/>
-        <input type="submit" value="Add" id="addbutton" onClick={this.update.bind(this)}/>
+        <input type="textarea" name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text} data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
+        <input type="button" value="Add" id="addbutton" onClick={this.update.bind(this)}/>
+        <br/> <br/> <br/> <br/>
         <ul id="list"></ul>
       </div>
     );
   }
 }
+
 
 App.defaultProps = { text: "" }
 
