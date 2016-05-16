@@ -1,7 +1,7 @@
 {
   "name": "proj3",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the TODO-List project created by/for the CXE Interns at StitchFix!",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server"
@@ -17,5 +17,14 @@
     "react-dom": "^15.0.2",
     "webpack": "^1.12.8",
     "webpack-dev-server": "^1.12.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stitchfix/cxe-interns-todolist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stitchfix/cxe-interns-todolist/issues"
+  },
+  "homepage": "https://github.com/stitchfix/cxe-interns-todolist#readme"
 }
