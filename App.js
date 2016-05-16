@@ -27,7 +27,7 @@ class App extends React.Component {
       var ul = document.getElementById("list"); //get list
       var li = document.createElement("li");    //make li element
       li.appendChild(document.createTextNode(textToAdd));//add text node
-      ul.appendChild(<li data-toggle="tooltip" data-placement="bottom" title="Don't forget this!">{textToAdd}</li>); //append li to list
+      ul.appendChild(li); //append li to list
     }
   }
 
