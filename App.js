@@ -21,7 +21,7 @@ class App extends React.Component {
     var textToAdd = document.getElementById('textToAdd').value; //get text from text box
 
     if(textToAdd!="") {
-        var table = document.getElementById('tbody'); //get table from page
+        var table = document.getElementById('table'); //get table from page
         var row = table.insertRow(this.state.count);  //add blank row to table
         var cell1 = row.insertCell(0);                //add blank cells to row
         var cell2 = row.insertCell(1);
