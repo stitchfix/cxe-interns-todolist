@@ -8,7 +8,6 @@ class App extends React.Component {
     this.update = this.update.bind(this);
   }
 
-
   update() {
     this.add();
     ReactDOM.render(<App text="" />, document.getElementById('app'))
@@ -39,27 +38,38 @@ class App extends React.Component {
 
   render(){
     return (
+      <form>
+      <div className="row">
+      <div className="col-lg-6">
+
+      <div className="input-group">
+        <input type="text" className="form-control" placeholder="List item..." name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text} data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
+        <span className="input-group-btn">
+          <button type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="right" title="Add Item"
+            data-content="This will add the item to the list!" data-trigger="hover" onClick={this.update.bind(this)}>
+            Add!
+          </button>
+        </span>
+      </div>
+
+      <br/> <br/> <hr size="50"/> <br/>
+
       <div>
-        <input type="textarea" name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text} data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
+        <table data-toggle="table" className="table" id="table" >
+          <thead className="thead-inverse">
+            <tr>
+              <th>#</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+          </tbody>
+        </table>
+      </div>
 
-        <button type="submit" className="btn btn-secondary" data-toggle="popover" data-container="body" data-placement="right" title="Add Item"
-          data-content="This will add the item to the list!" data-trigger="hover" onClick={this.update.bind(this)}>
-          Add Item!
-        </button>
-
-        <br/> <br/> <hr size="50"/> <br/>
-
-          <table data-toggle="table" className="table" id="table" >
-            <thead className="thead-inverse">
-              <tr>
-                <th>#</th>
-                <th>Note</th>
-              </tr>
-            </thead>
-            <tbody id="tbody">
-            </tbody>
-          </table>
-        </div>
+      </div>
+      </div>
+      </form>
     );
   }
 }
