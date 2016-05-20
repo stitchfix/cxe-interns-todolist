@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import WelcomeModal from './Modal';
 
 class App extends React.Component {
   constructor(){
@@ -43,44 +44,51 @@ class App extends React.Component {
     document.getElementById("textToAdd").value = "";
   }
 
+  checkForEnter(str_expression) {
+    if (str_expression.key == 'Enter') {
+        this.update();
+    }
+  }
+
   render(){
     return (
-      <form>
-        <div className="row">
-        <div className="col-lg-6">
+      <div>
+        <WelcomeModal/>
+          <div className="row">
+          <div className="col-lg-6">
 
-        <div className="input-group">
-          <input type="text" className="form-control" placeholder="List item..." name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text} data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
-          <span className="input-group-btn">
-            <button type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="right" title="Add Item"
-              data-content="This will add the item to the list!" data-trigger="hover" onClick={this.update.bind(this)}>
-              Add!
-            </button>
-            <button type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="bottom" title="Remove Item"
-              data-content="This remove the last item from the list" data-trigger="hover" onClick={this.remove.bind(this)}>
-              Remove!
-            </button>
-          </span>
-        </div>
+          <div className="input-group">
+            <input type="text" className="form-control" placeholder="List item..." name="textToAdd" id="textToAdd" onKeyUp={this.checkForEnter.bind(this)} size="75" defaultValue={this.props.text} data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
+            <span className="input-group-btn">
+              <button type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="right" title="Add Item"
+                data-content="This will add the item to the list!" data-trigger="hover" onClick={this.update.bind(this)}>
+                Add!
+              </button>
+              <button type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="bottom" title="Remove Item"
+                data-content="This remove the last item from the list" data-trigger="hover" onClick={this.remove.bind(this)}>
+                Remove!
+              </button>
+            </span>
+          </div>
 
-        <br/> <br/> <hr size="50"/> <br/>
+          <br/> <br/> <hr size="50"/> <br/>
 
-        <div>
-          <table data-toggle="table" className="table" id="table" >
-            <thead className="thead-inverse">
-              <tr>
-                <th>#</th>
-                <th>Note</th>
-              </tr>
-            </thead>
-            <tbody id="tbody">
-            </tbody>
-          </table>
-        </div>
+          <div>
+            <table data-toggle="table" className="table" id="table" >
+              <thead className="thead-inverse">
+                <tr>
+                  <th>#</th>
+                  <th>Note</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+              </tbody>
+            </table>
+          </div>
 
-        </div>
-        </div>
-      </form>
+          </div>
+          </div>
+    </div>
     );
   }
 }
