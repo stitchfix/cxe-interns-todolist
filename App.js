@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ListTable from "./ListTable";
+import WelcomeModal from './Modal';
 
 class App extends React.Component {
   constructor(){
@@ -43,6 +44,7 @@ class App extends React.Component {
       this.clear();                                 //clear textbox
   }
 
+  // Separately prevents the popovers on the page from displaying
   hidePopovers(){
 
     $(function () {
@@ -50,6 +52,7 @@ class App extends React.Component {
     });
   }
 
+  // Separately prevents the tooltips on the page from displaying
   hideTooltips(){
 
     $(function () {
@@ -57,15 +60,17 @@ class App extends React.Component {
     });
   }
 
+  // Calls both the functions that prevent the tooltips and popovers from displaying
   hidePopoversAndTooptips(){
 
     this.hidePopovers();
     this.hideTooltips();
   }
 
+  // Enables the popover and tooltips to display their content when hovered over
   enablePopoversAndTooltips(){
 
-    // select all elements with the 'data-toggle = tooltip
+    // select all elements with the 'data-toggle = tooltip'
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     });
@@ -82,36 +87,33 @@ class App extends React.Component {
     document.getElementById("textToAdd").value = "";
   }
 
+  checkForEnter(str_expression) {
+    if (str_expression.key == 'Enter') {
+        this.update();
+    }
+  }
+
   render(){
     return (
 
-        <div className="row">
-        <div className="col-lg-6">
+      <div>
+        <WelcomeModal/>
+          <div className="row">
+          <div className="col-lg-6">
 
-        <div className="input-group">
-
-          <input type="text" className="form-control" placeholder="List item..." name="textToAdd" id="textToAdd" size="75" defaultValue={this.props.text}
-            data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
-
-          <span className="input-group-btn">
-
-            <button href = "#" type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="right" title="Add Item"
-              data-content="This will add the item to the list!" data-trigger="hover" id = "add_button" onClick={this.update.bind(this)}>
-              Add!
-            </button>
-
-            <button href = "#" type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="bottom" title="Remove Item"
-              data-content="This remove the last item from the list" id = "button_one" data-trigger="hover" onClick={this.remove.bind(this)}>
-              Remove!
-            </button>
-
-            <div id = "toggle_groups" className = "btn-group" data-toggle = "buttons">
-                <button className = "btn btn-default" id = "button_on" onClick = {this.enablePopoversAndTooltips.bind(this)} > ON </button>
-                <button className = "btn btn-primary active" id = "button_off" onClick = {this.hidePopoversAndTooptips.bind(this)} > OFF </button>
-            </div>
-
-          </span>
-        </div>
+          <div className="input-group">
+            <input type="text" className="form-control" placeholder="List item..." name="textToAdd" id="textToAdd" onKeyUp={this.checkForEnter.bind(this)} size="75" defaultValue={this.props.text} data-toggle="tooltip" data-placement="bottom" title="This is the new text we will add to the list!"/>
+            <span className="input-group-btn">
+              <button type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="right" title="Add Item"
+                data-content="This will add the item to the list!" data-trigger="hover" onClick={this.update.bind(this)}>
+                Add!
+              </button>
+              <button type="button" className="btn btn-default" data-toggle="popover" data-container="body" data-placement="bottom" title="Remove Item"
+                data-content="This remove the last item from the list" data-trigger="hover" onClick={this.remove.bind(this)}>
+                Remove!
+              </button>
+            </span>
+          </div>
 
         <br/> <br/> <hr size="50"/> <br/>
 
@@ -119,6 +121,7 @@ class App extends React.Component {
 
         </div>
         </div>
+    </div>
     );
   }
 }
