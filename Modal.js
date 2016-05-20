@@ -14,8 +14,8 @@ const Modal = React.createClass({
             </div>
             <div className="modal-body">
               Welcome to <u>Notes!</u> This program will temporarily store your notes. You can add
-              them to your list by typing them in the text box and clicking on the <b>add</b> button. Clicking
-              on <b>remove</b> will remove your previous note.
+              them to your list by typing them in the text box and clicking on the <b>Add</b> button or pressing <b>Enter</b>. Clicking
+              on <b>Remove</b> will remove your previous note.
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" data-dismiss="modal" >Okay, sounds good!</button>
