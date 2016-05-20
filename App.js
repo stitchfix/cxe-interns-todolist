@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import ListTable from "./ListTable";
 import WelcomeModal from './Modal';
 
-
 class App extends React.Component {
   constructor(){
 
@@ -122,7 +121,6 @@ class App extends React.Component {
 
         </div>
         </div>
-
     </div>
     );
   }
