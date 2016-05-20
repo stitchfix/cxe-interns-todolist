@@ -9,7 +9,6 @@ class App extends React.Component {
     super();
     this.enablePopoversAndTooltips(); // popover and tooltip on by default
     this.state = {count: 1};
-
     this.update = this.update.bind(this);
   }
 
