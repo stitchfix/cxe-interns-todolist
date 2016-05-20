@@ -1,21 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ListTable from "./ListTable";
 import WelcomeModal from './Modal';
+
 
 class App extends React.Component {
   constructor(){
+
     super();
+    this.enablePopoversAndTooltips(); // popover and tooltip on by default
     this.state = {count: 1};
+
     this.update = this.update.bind(this);
   }
 
   update() {
+
     this.add();
     ReactDOM.render(<App text="" />, document.getElementById('app'))
     this.clear();
   }
 
-//Called when remove button is pressed, removes last element on table
+  //Called when remove button is pressed, removes last element on table
   remove() {
     const table = document.getElementById('table'); //get table from page
     if(this.state.count!=1 && this.state.count!=0){
@@ -24,7 +30,7 @@ class App extends React.Component {
     }
   }
 
-//Add method for taking text from text box and adding to table
+  //Add method for taking text from text box and adding to table
   add(){
     const textToAdd = document.getElementById('textToAdd').value; //get text from text box
     if(textToAdd!="") {
@@ -39,8 +45,46 @@ class App extends React.Component {
       this.clear();                                 //clear textbox
   }
 
-//Clear method for clearing text out of text box before next button click
+  // Separately prevents the popovers on the page from displaying
+  hidePopovers(){
+
+    $(function () {
+      $('[data-toggle="popover"]').popover('destroy')
+    });
+  }
+
+  // Separately prevents the tooltips on the page from displaying
+  hideTooltips(){
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip('destroy')
+    });
+  }
+
+  // Calls both the functions that prevent the tooltips and popovers from displaying
+  hidePopoversAndTooptips(){
+
+    this.hidePopovers();
+    this.hideTooltips();
+  }
+
+  // Enables the popover and tooltips to display their content when hovered over
+  enablePopoversAndTooltips(){
+
+    // select all elements with the 'data-toggle = tooltip'
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    });
+
+    // select all elements with the 'data-toggle = popover'
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    });
+  }
+
+  //Clear method for clearing text out of text box before next button click
   clear(){
+
     document.getElementById("textToAdd").value = "";
   }
 
@@ -52,6 +96,7 @@ class App extends React.Component {
 
   render(){
     return (
+
       <div>
         <WelcomeModal/>
           <div className="row">
@@ -71,28 +116,17 @@ class App extends React.Component {
             </span>
           </div>
 
-          <br/> <br/> <hr size="50"/> <br/>
+        <br/> <br/> <hr size="50"/> <br/>
 
-          <div>
-            <table data-toggle="table" className="table" id="table" >
-              <thead className="thead-inverse">
-                <tr>
-                  <th>#</th>
-                  <th>Note</th>
-                </tr>
-              </thead>
-              <tbody id="tbody">
-              </tbody>
-            </table>
-          </div>
+        <ListTable/>
 
-          </div>
-          </div>
+        </div>
+        </div>
+
     </div>
     );
   }
 }
-
 
 App.defaultProps = { text: "" }
 
