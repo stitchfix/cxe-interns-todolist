@@ -112,6 +112,11 @@ class App extends React.Component {
                 data-content="This remove the last item from the list" data-trigger="hover" onClick={this.remove.bind(this)}>
                 Remove!
               </button>
+
+              <div id = "toggle_groups" className = "btn-group" data-toggle = "buttons">
+                <button className = "btn btn-default" id = "button_on" onClick = {this.enablePopoversAndTooltips.bind(this)} > ON </button>
+                <button className = "btn btn-primary active" id = "button_off" onClick = {this.hidePopoversAndTooptips.bind(this)} > OFF </button>
+              </div>
             </span>
           </div>
 
