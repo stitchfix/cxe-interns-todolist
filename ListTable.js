@@ -2,6 +2,11 @@ import React from 'react';
 
 class ListTable extends React.Component {
 
+  constructor(){
+
+    super();
+  }
+
   render(){
 
     return (
