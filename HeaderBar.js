@@ -11,7 +11,7 @@ class HeaderBar extends React.Component {
 
   // Enables the popover and tooltips to display their content when hovered over
   enablePopoversAndTooltips(){
-
+    this.changeButton();
     // select all elements with the 'data-toggle = tooltip'
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
@@ -41,7 +41,7 @@ class HeaderBar extends React.Component {
 
   // Calls both the functions that prevent the tooltips and popovers from displaying
   hidePopoversAndTooptips(){
-
+    this.changeButton();
     this.hidePopovers();
     this.hideTooltips();
   }
@@ -51,6 +51,18 @@ class HeaderBar extends React.Component {
     if (str_expression.key == 'Enter') {
       this.props.update();
     }
+  }
+
+  //method to change button back and forth between on/off for tutorial
+  changeButton(){
+    $('.btn-toggle').click(function() {
+      $(this).find('.btn').toggleClass('active');
+      if ($(this).find('.btn-primary').size()>0) {
+      	$(this).find('.btn').toggleClass('btn-primary');
+      }
+      $(this).find('.btn').toggleClass('btn-default');
+    });
+
   }
 
   render(){
@@ -73,7 +85,7 @@ class HeaderBar extends React.Component {
                 Remove!
               </button>
 
-              <div id = "toggle_groups" className = "btn-group" data-toggle = "buttons">
+              <div id = "toggle_groups" className = "btn-group btn-toggle" data-toggle = "buttons">
                   <button className = "btn btn-default" id = "button_on" onClick = {this.enablePopoversAndTooltips.bind(this)} > ON </button>
                   <button className = "btn btn-primary active" id = "button_off" onClick = {this.hidePopoversAndTooptips.bind(this)} > OFF </button>
               </div>
