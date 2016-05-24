@@ -15,6 +15,7 @@ class App extends React.Component {
   update() {
 
     this.add();
+    ReactDOM.render();
     this.clear();
   }
 
@@ -59,7 +60,7 @@ class App extends React.Component {
       <div>
         <WelcomeModal/>
           <div className="row">
-          <div className="col-lg-8">
+          <div className="col-md-6 col-md-offset-3" >
 
           <HeaderBar update = {this.update.bind(this)} remove = {this.remove.bind(this)}/>
 
