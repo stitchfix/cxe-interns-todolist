@@ -57,15 +57,13 @@ class HeaderBar extends React.Component {
   checkForEnter(str_expression) {
 
     if (str_expression.key == 'Enter') {
+      
       this.props.update();
     }
   }
 
   // Method to visually change button back and forth between on/off for tutorial
-  changeButton(){
-
-    var on = document.getElementById('button_on');
-    var off = document.getElementById('button_off');
+  changeButton(on, off){
 
       if (on.className == "btn btn-default"){
 
@@ -81,16 +79,18 @@ class HeaderBar extends React.Component {
 
     toggle(){
 
+      console.log("HIT!");
       var on = document.getElementById('button_on');
       var off = document.getElementById('button_off');
 
-      this.changeButton();
+      this.changeButton(on, off);
 
       if (on.className == "btn btn-primary active"){
 
         this.enablePopoversAndTooltips()
 
       }else if (off.className == "btn btn-primary active") {
+
         this.hidePopoversAndTooptips();
       }
     }
